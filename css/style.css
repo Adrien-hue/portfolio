@@ -379,3 +379,34 @@ progress::-webkit-progress-value {
 
     margin: 7px 4px;
 }
+
+/* Popup d'information */
+.notify{  
+    position:fixed;
+    top:0px;
+    width:100%;
+    height:0;  
+    box-sizing:border-box;
+    color:white;  
+    text-align:center;
+    background:rgba(0,0,0,.6);
+    overflow:hidden;
+    box-sizing:border-box;
+    transition: height .2s;
+}
+  
+#notifyType:before{
+    display:block;
+}
+
+.active{  
+    height:50px;
+}
+
+.success{
+    color: #77dd77;
+}
+
+.error{
+    color: #ff6666;
+}

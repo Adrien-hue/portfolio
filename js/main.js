@@ -146,12 +146,14 @@ async function createJson(path, arData){
         if (response.ok) {
             return response.json();
         }
+        displayPopup('error', "Une erreur est survenue lors de l'enregistrement.");
         return Promise.reject(response);
     })
     .then(function (data) {
-        console.log(data);
+        displayPopup('success', "L'enregistrement c'est correctement effectué.");
     })
     .catch(error =>{
+        displayPopup('error', "Une erreur est survenue lors de l'enregistrement.");
         console.log(`createJson - Il y a eu un problème avec l'opération fetch: ${error.message}`);
     });
 }
@@ -179,12 +181,14 @@ async function readJson(path, searchTerm = undefined){
         if (!response.ok) {
             throw new Error(`HTTP error ${response.status}`);
         }
+        displayPopup('error', "Une erreur est survenue lors de la récupération.");
         return response.json();
     })
     .then(json => {
         arJson = json;
     })
     .catch(error =>{
+        displayPopup('error', "Une erreur est survenue lors de la récupération.");
         console.log(`readJson - Il y a eu un problème avec l'opération fetch: ${error.message}`);
     });
 
@@ -217,12 +221,15 @@ async function updateJson(path, id, arData){
         if (response.ok) {
             return response.json();
         }
+        displayPopup('error', "Une erreur est survenue lors de la mise à jour.");
         return Promise.reject(response);
     })
     .then(function (data) {
+        displayPopup('success', "La mise à jour c'est correctement effectué.");
         console.log(data);
     })
     .catch(error =>{
+        displayPopup('error', "Une erreur est survenue lors de la mise à jour.");
         console.log(`updateJson - Il y a eu un problème avec l'opération fetch: ${error.message}`);
     });
 }
@@ -247,12 +254,15 @@ async function deleteJson(path, id){
         if (response.ok) {
             return response.json();
         }
+        displayPopup('error', "Une erreur est survenue lors de la suppression.");
         return Promise.reject(response);
     })
     .then(function (data) {
+        displayPopup('success', "La suppression c'est correctement effectué.");
         console.log(data);
     })
     .catch(error =>{
+        displayPopup('error', "Une erreur est survenue lors de la suppression.");
         console.log(`deleteJson - Il y a eu un problème avec l'opération fetch: ${error.message}`);
     });
 }
@@ -836,4 +846,27 @@ function clickEditButton(form, data){
     arInput.forEach(input => {
         input.value = data[input.name];
     });
+}
+
+/**
+ * Affiche une popup d'information
+ * 
+ * @param {String} type Nature de la notification (success | error | information)
+ * @param {String} message Message à afficher
+ */
+function displayPopup(type, message){
+    let divNotify = document.querySelector('.notify');
+    let spanText = document.getElementById('notifyText');
+
+    //Peuplement de la div
+    divNotify.classList.add('active');
+
+    //Peuplement du span
+    spanText.textContent = message;
+    spanText.classList.add(type);
+
+    setTimeout(function(){
+        divNotify.classList.remove('active');
+        spanText.classList.remove(type);
+    }, 3000);
 }
