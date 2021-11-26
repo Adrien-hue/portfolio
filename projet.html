@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <header>
+        <!-- Fill with JavaScript -->
+    </header>
+    <main>
+        <main>
+            <div class="row flexCenter">
+                <h2 id="content-title">Détails du projet</h2>
+
+                <button type="button" class="button buttonRouge" id="deleteProject">Supprimer</button>
+            </div>
+    
+
+            <section id="content">
+                <div class="details_projet">
+                    <form id="formDetailsProject">
+                        <div class="row flexCenter formAction hide">
+                            <button type="submit" class="button buttonVert">Enregistrer</button>
+                            <button type="reset" class="button buttonRouge">Annuler</button>
+                        </div>
+
+                        <table class="tableInfo" id="infos_project">
+                            <tbody>
+                                <tr>
+                                    <td><label for="projectName">Nom du projet :</label></td>
+                                    <td><input type="text" name="name" id="projectName" disabled></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="urlProject">Accès au projet :</label></td>
+                                    <td><input type="text" name="url" id="urlProject" disabled></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="descriptionProject">Description :</label></td>
+                                    <td><textarea name="description" id="descriptionProject" disabled></textarea></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="mediasProject">
+                            <h3>Photos</h3>
+                            <!-- <input type="file" name="medias[]"> -->
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </main>
+    <footer></footer>
+
+    <script>
+        getHeader();
+
+        let btnDeleteProject = document.getElementById('deleteProject');
+        let saveForm = document.querySelector(`#formDetailsProject button[type='submit']`);
+        let form = document.getElementById("formDetailsProject");
+
+        //Récupération de l'url et de ses paramètres
+        const urlParams = new URLSearchParams(window.location.search);
+        const idProject = (urlParams.has('id_projet') && urlParams.get('id_projet') != undefined) ? urlParams.get('id_projet') : undefined;
+
+
+        if(idProject != undefined){
+            //Dans le cas de la consultation d'un projet
+            fillInput('infos_project', 'projects', idProject);
+            displayProjectMedia('projects', idProject);
+
+            btnDeleteProject.addEventListener('click', function(){
+                deleteJson('projects', idProject);
+
+                window.location.href = "projets.html";
+            });
+        } else {
+            //cache le bouton supprimé
+            btnDeleteProject.classList.add('hide');
+
+            //Dans le cas de la création d'un nouveau projet
+            enableForm('formDetailsProject');
+
+            saveForm.addEventListener('click', function(event){
+                event.preventDefault();
+                data = new FormData(document.getElementById("formDetailsProject"));
+                console.log(data);
+                // createJson("projects", document.getElementById("formDetailsProject"));
+                return false;
+            })
+        }
+
+        // arData["name"]= "Portfolio";
+        // arData["description"]= "Lors de notre semaine d'apprentissage du JavaScript, il nous a été demandé de réalisé ce portfolio uniquement en HTML, CSS et JavaScript";
+        // arData["url"]= "file:///Applications/MAMP/htdocs/portfolio/";
+        // arData["medias"]= [];
+    </script>
+</body>
+</html>

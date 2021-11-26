@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Projet fin de semaine 2 - JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bdd": "npx json-server --watch database/db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adrien-hue/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adrien-hue/portfolio/issues"
+  },
+  "homepage": "https://github.com/Adrien-hue/portfolio#readme",
+  "dependencies": {
+    "json-server": "^0.17.0",
+    "page": "^1.11.6"
+  }
+}

@@ -1,0 +1,381 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Menu de navigation */
+#menuToggle
+{
+  display: block;
+  position: relative;
+  top: 50px;
+  left: 50px;
+  width: fit-content;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a
+{
+  text-decoration: none;
+  color: #cdcdcd;
+  
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover
+{
+  color: #73049f;
+}
+
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #cdcdcd;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #cdcdcd;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu
+{
+  position: absolute;
+  width: 300px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  
+  background-color: rgba(42, 42, 42, 0.7);
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+/* Fin menu de navigation */
+
+header{
+    background-image: url("../img/banner.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 700px;
+}
+main{
+    margin-top: 20px;
+}
+#accueil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#accueil .title{
+    width: fit-content;
+    padding: 20px 35px;
+    background-color: rgba(42, 42, 42, 0.8);
+    border-radius: 5px;
+    text-align: center;
+    color: #cdcdcd;
+    position: absolute;
+    top: 310px;
+}
+
+#accueil .title h1{
+    font-size: 42px;
+}
+
+#accueil .title p{
+    font-size: 28px;
+}
+
+#content-title{
+    text-align: center;
+    margin: 10px 0;
+    font-size: 30px;
+}
+
+#content {
+    display: flex;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.article-projet{
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    margin: 15px;
+}
+
+.article-projet h3{
+    font-size: 30px;
+    text-align: center;
+    background-color: rgba(42, 42, 42, 0.8);
+    color: #cdcdcd;
+    position: relative;
+    bottom: 40px;
+}
+
+.article-projet img{
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    max-height: 400px;
+}
+
+.details_projet{
+    width: 50%;
+    min-width: 400px;
+}
+
+.mediasProject{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    margin-top: 25px;
+}
+
+.mediasProject h3{
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+}
+
+.mediasProject img{
+    width: 40%;
+    min-width: 300px;
+    margin: 15px;
+}
+
+.tableInfo {
+	width: 100%;
+	padding: 10px;
+}
+
+.tableInfo tr td{
+	padding: 0;
+	margin: 0;
+	width: 50%;
+}
+
+.tableInfo tr td input{
+    width: 100%;
+	height: fit-content;
+	background: none;
+	border: none;
+    border-bottom: 1px solid rgba(42, 42, 42, 0.8);
+	resize: none;
+
+    font-family: Times, serif;
+    font-size: 14px;
+}
+
+.tableInfo tr td input:disabled{
+	background: none;
+    border: none; 
+}
+
+textarea {
+	resize: none;
+  	overflow: hidden;
+	width: 100%;
+
+	background: none;
+    border: 1px solid rgba(42, 42, 42, 0.8);
+	border-radius: 4px;
+
+    font-family: Times, serif;
+    font-size: 14px;
+}
+
+.tableInfo tr td textarea:disabled{
+	border: none;
+}
+
+.button{
+    background-color: #FFFFFF;
+    border: 2px solid #cdcdcd;
+    border-radius: 4px;
+    padding: 3px 6px;
+	margin: 5px;
+	cursor: pointer;
+}
+
+.buttonVert{
+	color: #77dd77; 
+    border-color: #77dd77;
+}
+
+.buttonRouge {
+	color: #ff6666;
+    border-color: #ff6666;
+}
+
+.row{
+	display: flex;
+	padding: 0;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+.flexCenter{
+    justify-content: center;
+}
+
+.flexBetween{
+    justify-content: space-between;
+}
+
+.hide{
+    display: none;
+}
+
+#skills, #diplomes, #formations, #experiences, #infos_perso{
+    padding: 10px;
+    width: 400px;
+    margin: 20px;
+}
+
+#skills .skill {
+    margin: 10px 0;
+}
+
+progress {
+    border-radius: 7px; 
+    width: 100%;
+    height: 22px;
+    box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+}
+
+progress::-webkit-progress-bar {
+    background-color: whitesmoke;
+    border-radius: 7px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #73049f;
+    border-radius: 7px;
+    box-shadow: none;
+}
+
+#diplomes .diplome, #formations .formation, #experiences .experience{
+    margin: 10px;
+}
+
+#diplomes .diplomeDate, #formations .formationDate, #experiences .experienceDate{
+    font-style: italic;
+    font-size: 14px;
+}
+
+.addForm {
+    width: 100%;
+}
+
+.addForm input, .addForm textarea{
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid #cdcdcd;
+    display: block;
+
+    margin: 7px 4px;
+}

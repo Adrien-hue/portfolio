@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <header>
+        <!-- Fill with JavaScript -->
+    </header>
+    <main>
+        <div id="content">
+
+
+            <div id="infos_perso">
+                <table class="tableInfo" id="infos_persoTable">
+                    <tbody>
+                        <tr>
+                            <td><label for="nom">Nom :</label></td>
+                            <td><input type="text" name="nom" id="nom" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><label for="prenom">Prénom :</label></td>
+                            <td><input type="text" name="prenom" id="prenom" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><label for="adresse">Adresse :</label></td>
+                            <td><input type="text" name="adresse" id="adresse" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><label for="cp">Code postal :</label></td>
+                            <td><input type="text" name="cp" id="cp" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><label for="ville">Ville :</label></td>
+                            <td><input type="text" name="ville" id="ville" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><label for="email">Email :</label></td>
+                            <td><input type="text" name="email" id="email" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><label for="telephone">Téléphone :</label></td>
+                            <td><input type="text" name="telephone" id="telephone" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><label for="a_propos">À propos :</label></td>
+                            <td><textarea type="text" name="a_propos" id="a_propos" disabled></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="experiences">
+                <h3>Expériences</h3>
+
+                <form id="addExperiences" class="addForm">
+                    <input type="hidden" name="id">
+
+                    <input type="text" name="job" placeholder="Poste" required>
+                    <input type="text" name="company" placeholder="Entreprise" required>
+                    <input type="text" name="date" placeholder="Date" required>
+                    <input type="text" name="place" placeholder="Lieu" required>
+                    <textarea name="description" placeholder="Description"></textarea>
+                    
+                    <div class="row flexCenter">
+                        <button type="submit" class="button buttonVert">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="formations">
+                <h3>Formations</h3>
+
+                <form id="addFormations" class="addForm">
+                    <input type="hidden" name="id">
+
+                    <input type="text" name="name" placeholder="Formation" required>
+                    <input type="text" name="place" placeholder="Lieu" required>
+                    <input type="text" name="date" placeholder="Date" required>
+                    
+                    <div class="row flexCenter">
+                        <button type="submit" class="button buttonVert">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="skills">
+                <h3>Compétences</h3>
+
+                <form id="addSkills" class="addForm">
+                    <input type="hidden" name="id">
+
+                    <input type="text" name="name" placeholder="Compétence" required>
+                    <input type="number" name="level" min="0" max="100" placeholder="Niveau" required>
+                    
+                    <div class="row flexCenter">
+                        <button type="submit" class="button buttonVert">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="diplomes">
+                <h3>Diplômes</h3>
+
+                <form id="addDiplomes" class="addForm">
+                    <input type="hidden" name="id">
+
+                    <input type="text" name="name" placeholder="Diplôme" required>
+                    <input type="text" name="place" placeholder="Lieu" required>
+                    <input type="text" name="date" placeholder="Date" required>
+                    
+                    <div class="row flexCenter">
+                        <button type="submit" class="button buttonVert">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+
+<script>
+    //Ajout du header
+    getHeader();
+
+    let content = document.getElementById('content');
+
+    let divExperiences = document.getElementById('experiences');
+    let divFormations = document.getElementById('formations');
+    let divSkills = document.getElementById('skills');
+    let divDiplomes = document.getElementById('diplomes');
+
+    let experiencesForm = document.getElementById('addExperiences');
+    let formationsForm = document.getElementById('addFormations');
+    let skillsForm = document.getElementById('addSkills');
+    let diplomesForm = document.getElementById('addDiplomes');
+
+    //Chargement des différents modules de la page
+    fillInput('infos_persoTable', 'infos_perso');
+
+    loadDivExperiences(divExperiences, experiencesForm);
+    
+    loadDivFormations(divFormations, formationsForm);
+
+    loadDivSkills(divSkills, skillsForm);
+
+    loadDivDiplomes(divDiplomes, diplomesForm);
+
+    document.addEventListener("DOMContentLoaded", function() {
+        let arDataExperiences, arDataFormations, arDataSkills, arDataDiplomes;
+
+        let arDeleteButton = document.querySelectorAll('.deleteButton');
+
+        //Création d'entrée
+        experiencesForm.addEventListener("submit", async function(evt) {
+            let idExperience = experiencesForm.querySelector(`input[name='id']`).value;
+
+            //Annule le comportemenet de base
+            evt.preventDefault();
+            
+            //Formatte le formulaire
+            arDataExperiences = formInputToArray('addExperiences')
+
+            if(idExperience != ""){
+                //Met à jour un enregistrement
+                await updateJson('experiences', idExperience, arDataExperiences);
+            }else{
+                //Insère la nouvelle entrée
+                await createJson('experiences', arDataExperiences);
+            }
+
+            //Actualise le tableau
+            document.querySelectorAll('.experience').forEach(e => e.remove());
+
+            loadDivExperiences(divExperiences);
+
+            experiencesForm.reset();
+        });
+
+        formationsForm.addEventListener("submit", async function(evt) {
+            let idFormation = formationsForm.querySelector(`input[name='id']`).value;
+
+            //Annule le comportemenet de base
+            evt.preventDefault();
+            
+            //Formatte le formulaire
+            arDataFormations = formInputToArray('addFormations')
+
+            if(idFormation != ""){
+                //Met à jour un enregistrement
+                await updateJson('formations', idFormation, arDataFormations);
+            }else{
+                //Insère la nouvelle entrée
+                await createJson('formations', arDataFormations);
+            }
+
+            //Actualise le tableau
+            document.querySelectorAll('.formation').forEach(e => e.remove());
+
+            loadDivFormations(divFormations);
+
+            formationsForm.reset();
+        });
+
+        skillsForm.addEventListener("submit", async function(evt) {
+            let idSkill = skillsForm.querySelector(`input[name='id']`).value;
+
+            //Annule le comportemenet de base
+            evt.preventDefault();
+            
+            //Formatte le formulaire
+            arDataSkills = formInputToArray('addSkills')
+
+            if(idSkill != ""){
+                //Met à jour un enregistrement
+                await updateJson('skills', idSkill, arDataSkills);
+            }else{
+                //Insère la nouvelle entrée
+                await createJson('skills', arDataSkills);
+            }
+
+            //Actualise le tableau
+            document.querySelectorAll('.skill').forEach(e => e.remove());
+
+            loadDivSkills(divSkills);
+
+            skillsForm.reset();
+        });
+
+        diplomesForm.addEventListener("submit", async function(evt) {
+            let idDiplome = diplomesForm.querySelector(`input[name='id']`).value;
+
+            //Annule le comportemenet de base
+            evt.preventDefault();
+            
+            //Formatte le formulaire
+            arDataDiplomes = formInputToArray('addDiplomes')
+
+            if(idDiplome != ""){
+                //Met à jour un enregistrement
+                await updateJson('diplomes', idDiplome, arDataDiplomes);
+            }else{
+                //Insère la nouvelle entrée
+                await createJson('diplomes', arDataDiplomes);
+            }
+
+            //Actualise le tableau
+            document.querySelectorAll('.diplome').forEach(e => e.remove());
+
+            loadDivDiplomes(divDiplomes);
+
+            diplomesForm.reset();
+        });
+    });
+
+</script>
+</html>

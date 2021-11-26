@@ -1,0 +1,146 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Bataille navale",
+      "description": "Au cours du mois de janvier 2020, ils nous a été confié la mission de développer un jeu de bataille navale, dans le langage de programmation Java, en 1 semaine. Par groupe de 2 personnes, nous avons dû prendre connaissance de code déjà existant puis développer les fonctionnalités nécessaires mais manquantes pour le bon fonctionnement du programme. A la fin de cette semaine, nous avons terminé de développer la bataille navale ainsi que 2 niveaux d’intelligence artificielle.",
+      "url": "",
+      "medias": [
+        "bataille_navale.png",
+        "bataille_navale_2.jpeg"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Bibliothèque",
+      "description": "Pour le deuxième semestre de la 1ère année de BTS, nous avons eu pour projet de développer un site Web permettant la gestion d’une bibliothèque en ligne.Dans un premier temps, nous avons choisi le nom  « Wenchang » en rapport avec le dieu Wenchang Dijun dans la mythologie chinoise qui est le dieux de la culture et de la littérature.La structure d’une base de données ainsi qu’un cahierdes charge nous ont été fournis. Nous avons d’abord développé un site vitrine permettant de voir la liste de livres disponibles en base de données. Nous pouvons aussi consulter le détail par livre et avoir un visuel du livre.Dans un second temps, nous avons du apporter des amélioration au site Wenchang. Nous avons ajouter un espace de connexion pour les membres et les administrateurs, modifié la base de données pour pouvoir y renseigner des réservations et nous avons ajouté la fonctionnalité pour réserver un ou plusieurs livres.",
+      "url": "",
+      "medias": [
+        "bibliotheque.png"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Application Web GSB",
+      "description": "Dans le cadre de nos cours de Projet Personnel Encadré (PPE), il nous a été confié la mission de développer une application légère de gestion de frais pour le laboratoire Galaxy Swiss Bourdin. Le laboratoire Galaxy Swiss Bourdin a besoin d’une application Web permettant de suivre les frais des employés ainsi que de suivre les opérations effectuées par les comptables sur ces dernières. Une fois que nous avons pris connaissance des ressources fournies(code, cahier des charges, base de données), nous avons développé les différentes fonctionnalités manquantes comme la génération de PDF avec la bibliothèque FPDF ou un espace d’administration pour les comptables.",
+      "url": "http://houeeadrien.ipssi-sio.fr/",
+      "medias": [
+        "gsb.jpeg"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Client lourd GSB",
+      "description": "Dans le cadre de nos cours de Projet Personnel Encadré (PPE), il nous a été confié la mission de développer un client lourd de gestion de compte rendu pour le laboratoire Galaxy Swiss Bourdin. Le laboratoire Galaxy Swiss Bourdin a besoin d’un client lourd permettant de suivre les visites que font les employés ainsi que de suivre les échantillons que ces derniers laissent aux médecins lors de leur visite. Après avoir pris connaissances du cahier des charges, nous avons du modifier la structure de la base de données. Nous sommes partie de zéro et nous avons développé une application en Java, en utilisant Java Swing pour l’interface graphique, qui est connectée à la base de données.",
+      "url": "https://www.mediafire.com/file/eltecft78sz7y4t/clientLourd_GSB.jar/file",
+      "medias": [
+        "gsb.jpeg"
+      ]
+    }
+  ],
+  "infos_perso": {
+    "photo": "",
+    "nom": "HOUÉE",
+    "prenom": "Adrien",
+    "adresse": "4 Route de Nangis",
+    "cp": "77970",
+    "ville": "Bannost-Villegagnon",
+    "telephone": "06 49 78 40 70",
+    "email": "adrien.houee1@gmail.com",
+    "a_propos": ""
+  },
+  "experiences": [
+    {
+      "id": 1,
+      "job": "Développeur WEB",
+      "company": "One-Expert",
+      "date": "Depuis Septembre 2020",
+      "place": "Serris",
+      "description": "<ul><li>Ajout et maintenance de fonctionnalité pour l'application WEB VisualQIE</li><li>Modification de base de données</li><li>Modification des sites de clients</li></ul>"
+    },
+    {
+      "id": 2,
+      "job": "Stagiaire - Développeur WEB",
+      "company": "S.A.R.L. Téatis",
+      "date": "De Février 2020 à Avril 2020",
+      "place": "Bannost-Villegagnon",
+      "description": "<ul><li>Maintenance de site WEB(HTML5, CSS3, Joomla)</li><li>Conception d'une base de données</li><li>Ajout de fonctionnalité pour l'application WEB d'infographie du Figaro</li><li>Modification de l'application WEB FeedAliance</li></ul>"
+    }
+  ],
+  "formations": [
+    {
+      "id": 1,
+      "name": "Bachelor Développeur Full-Stack",
+      "place": "IPSSI Montévrain",
+      "date": "Depuis 2021"
+    },
+    {
+      "id": 2,
+      "name": "BTS SIO option SLAM - B",
+      "place": "IPSSI Montévrain",
+      "date": "De 2019 à 2021"
+    }
+  ],
+  "skills": [
+    {
+      "id": 1,
+      "name": "JavaScript",
+      "level": "40"
+    },
+    {
+      "id": 2,
+      "name": "MySQL",
+      "level": "60"
+    },
+    {
+      "id": 3,
+      "name": "PHP",
+      "level": "60"
+    },
+    {
+      "name": "HTML5",
+      "level": "80",
+      "id": 4
+    },
+    {
+      "name": "CSS3",
+      "level": "50",
+      "id": 5
+    },
+    {
+      "name": "Git",
+      "level": "30",
+      "id": 6
+    },
+    {
+      "name": "MacOS",
+      "level": "40",
+      "id": 7
+    },
+    {
+      "id": 8,
+      "name": "Windows",
+      "level": "40"
+    }
+  ],
+  "diplomes": [
+    {
+      "id": 1,
+      "name": "Baccalauréat Scientifique",
+      "place": "Lycée Thibaut de Champagne - Provins",
+      "date": "Depuis 2019"
+    },
+    {
+      "id": 2,
+      "name": "DELE - A2",
+      "place": "Collège Sainte Marie",
+      "date": "Depuis 2015"
+    },
+    {
+      "name": "BTS SIO Option SLAM",
+      "place": "École IPSSI Montévrain",
+      "date": "Depuis 2021",
+      "id": 3
+    }
+  ]
+}
