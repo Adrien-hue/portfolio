@@ -145,9 +145,10 @@ async function createJson(path, arData){
     .then(function (response) {
         if (response.ok) {
             return response.json();
+        } else {
+            displayPopup('error', "Une erreur est survenue lors de l'enregistrement.");
+            return Promise.reject(response);
         }
-        displayPopup('error', "Une erreur est survenue lors de l'enregistrement.");
-        return Promise.reject(response);
     })
     .then(function (data) {
         displayPopup('success', "L'enregistrement c'est correctement effectué.");
@@ -157,7 +158,6 @@ async function createJson(path, arData){
         console.log(`createJson - Il y a eu un problème avec l'opération fetch: ${error.message}`);
     });
 }
-
 /**
  * Permet de récupérer les données en base de données
  * 
@@ -179,9 +179,9 @@ async function readJson(path, searchTerm = undefined){
     req = await fetch(url, {method: 'GET'})
     .then(response => {
         if (!response.ok) {
+            displayPopup('error', "Une erreur est survenue lors de la récupération.");
             throw new Error(`HTTP error ${response.status}`);
         }
-        displayPopup('error', "Une erreur est survenue lors de la récupération.");
         return response.json();
     })
     .then(json => {
@@ -220,9 +220,10 @@ async function updateJson(path, id, arData){
     .then(function (response) {
         if (response.ok) {
             return response.json();
+        } else {
+            displayPopup('error', "Une erreur est survenue lors de la mise à jour.");
+            return Promise.reject(response);
         }
-        displayPopup('error', "Une erreur est survenue lors de la mise à jour.");
-        return Promise.reject(response);
     })
     .then(function (data) {
         displayPopup('success', "La mise à jour c'est correctement effectué.");
@@ -253,9 +254,10 @@ async function deleteJson(path, id){
     .then(function (response) {
         if (response.ok) {
             return response.json();
+        } else {
+            displayPopup('error', "Une erreur est survenue lors de la suppression.");
+            return Promise.reject(response);
         }
-        displayPopup('error', "Une erreur est survenue lors de la suppression.");
-        return Promise.reject(response);
     })
     .then(function (data) {
         displayPopup('success', "La suppression c'est correctement effectué.");
